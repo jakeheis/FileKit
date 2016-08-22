@@ -37,8 +37,8 @@ extension NSData: DataType, WritableToFile {
         return contents
     }
 
-    /// Returns data read from the given path using Data.ReadingOptions.
-    public static func readFromPath(_ path: Path, options: Data.ReadingOptions) throws -> Self {
+    /// Returns data read from the given path using NSData.ReadingOptions.
+    public static func readFromPath(_ path: Path, options: NSData.ReadingOptions) throws -> Self {
         do {
             return try self.init(contentsOfFile: path._safeRawValue, options: options)
         } catch {
