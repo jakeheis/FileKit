@@ -40,20 +40,18 @@ public class FileSystemWatcher {
         contextInfo: UnsafeMutableRawPointer?,
         numEvents: Int,
         eventPaths: UnsafeMutableRawPointer,
-        eventFlags: UnsafePointer<FSEventStreamEventFlags>?,
-        eventIds: UnsafePointer<FSEventStreamEventId>?) in
+        eventFlags: UnsafePointer<FSEventStreamEventFlags>,
+        eventIds: UnsafePointer<FSEventStreamEventId>) in
 
         FileSystemWatcher.log("Callback Fired")
 
         let watcher: FileSystemWatcher = unsafeBitCast(contextInfo, to: FileSystemWatcher.self)
 
         defer {
-            if let lastEventId = eventIds?[numEvents - 1] {
-                watcher.lastEventId = lastEventId
-            }
+            watcher.lastEventId = eventIds[numEvents - 1]
         }
 
-        guard let paths = unsafeBitCast(eventPaths, to: NSArray.self) as? [String], let eventFlags = eventFlags, let eventIds = eventIds else {
+        guard let paths = unsafeBitCast(eventPaths, to: NSArray.self) as? [String] else {
             return
         }
 

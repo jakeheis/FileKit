@@ -96,11 +96,6 @@ class FileKitTests: XCTestCase {
         XCTAssertEqual(b, c)
     }
 
-    func testPathStringInterpolationConvertible() {
-        let path: Path = "\(Path.userTemporary)/testfile_\(10)"
-        XCTAssertEqual(path.rawValue, Path.userTemporary.rawValue + "/testfile_10")
-    }
-
     func testPathEquality() {
         let a: Path = "~"
         let b: Path = "~/"
@@ -226,18 +221,18 @@ class FileKitTests: XCTestCase {
         }
 
         for p in [a, b] {
-            print(p.creationDate)
-            print(p.modificationDate)
-            print(p.ownerName)
-            print(p.ownerID)
-            print(p.groupName)
-            print(p.groupID)
-            print(p.extensionIsHidden)
-            print(p.posixPermissions)
-            print(p.fileReferenceCount)
-            print(p.fileSize)
-            print(p.filesystemFileNumber)
-            print(p.fileType)
+            print(p.creationDate as Any)
+            print(p.modificationDate as Any)
+            print(p.ownerName as Any)
+            print(p.ownerID as Any)
+            print(p.groupName as Any)
+            print(p.groupID as Any)
+            print(p.extensionIsHidden as Any)
+            print(p.posixPermissions as Any)
+            print(p.fileReferenceCount as Any)
+            print(p.fileSize as Any)
+            print(p.filesystemFileNumber as Any)
+            print(p.fileType as Any)
             print("")
         }
     }

@@ -228,7 +228,7 @@ open class TextFileStreamReader: TextFileStream {
         let cleaningRange = NSRange(location: 0, length: range.location + range.length)
         buffer.replaceBytes(in: cleaningRange, withBytes: nil, length: 0)
 
-        return line as? String
+        return line as String?
     }
 
     /// Start reading from the beginning of file.

@@ -1,3 +1,4 @@
+// swift-tools-version:4.0
 //
 //  Package.swift
 //  FileKit
@@ -29,7 +30,11 @@ import PackageDescription
 
 let package = Package(
     name: "FileKit",
-    exclude: [
-	"Tests"
+    products: [
+        .library(name: "FileKit", targets: ["FileKit"]),
+    ],
+    targets: [
+        .target(name: "FileKit", dependencies: []),
+        .testTarget(name: "FileKitTests", dependencies: ["FileKit"]),
     ]
 )
