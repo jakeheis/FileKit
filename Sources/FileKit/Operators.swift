@@ -142,7 +142,7 @@ public func + (lhs: Path, rhs: Path) -> Path {
     if rhs.rawValue.isEmpty || rhs.rawValue == "." { return lhs }
     switch (lhs.rawValue.hasSuffix(Path.separator), rhs.rawValue.hasPrefix(Path.separator)) {
     case (true, true):
-        let rhsRawValue = rhs.rawValue[rhs.rawValue.characters.index(after: rhs.rawValue.startIndex)...]
+        let rhsRawValue = rhs.rawValue[rhs.rawValue.index(after: rhs.rawValue.startIndex)...]
         return Path("\(lhs.rawValue)\(rhsRawValue)")
     case (false, false):
         return Path("\(lhs.rawValue)\(Path.separator)\(rhs.rawValue)")
